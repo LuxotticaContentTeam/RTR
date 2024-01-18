@@ -1,0 +1,34 @@
+@if($env == 'development'){
+    body{
+        margin: 0;
+        
+    }
+
+    @if($brand == 'RB'){
+        @font-face {
+            font-family: 'Oswald';
+            src: url(../static/fonts/RB/oswald-v34-vietnamese_latin-ext_latin_cyrillic-ext_cyrillic-regular.woff2) format('woff');
+            font-weight: normal;
+            font-style: normal;
+         }
+         @font-face {
+            font-family: 'Oswald';
+            src: url(../static/fonts/RB/oswald-v34-vietnamese_latin-ext_latin_cyrillic-ext_cyrillic-500.woff2) format('woff');
+            font-weight: 500;
+            font-style: normal;
+         }
+         
+         @font-face {
+            font-family: "Lato";
+            src: url(../static/fonts/RB/lato-v16-latin-regular.woff2) format('woff');
+            font-weight: normal;
+            font-style: normal;
+         }
+         
+         *{
+            font-family: 'Lato', sans-serif;
+         }
+         
+         
+    }
+}
