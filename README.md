@@ -1,4 +1,4 @@
-# SMV2
+# RTR
 
 
 ## Project Structure
@@ -31,24 +31,3 @@ This command is used just to run a build and place the files in the `test` folde
     npm run build
 To bundle and minify alla the files. The prompt also ask is there is a release, if yes, it takes the project version from package.json file and create the file html, js, css with the release number inside the `release`folder. 
 These are the file that should be uploaded on filezilla.
-
-## Data Structure
-
-| 	Attribute 	 | Type  | Value                         |       Description         |
-|----------------|----|---------------------------|-----------------------------|
-|id           |`String`| -- |Not Mandatory. Just to identify the content
-|country      |`String, String[]` | `"ALL",["en-us","it-it",ecc..]` | Not Mandatory. "ALL" is the default if the field is missing. It defines the country in which the story should be displayed.
-|exceptCountries |`String[]`| `["en-us","it-it",ecc..]` |Not Mandatory. It defines the country in which the story shouldn't be displayed. It must be used when `country` is not present or set to "ALL"
-|variant          |`String`| `"default", "default_center"` | Not Mandatory. It define the layout variant to use. If not definied the default variant is with text and product aligned to the left.
-| anchor         |`String`| -- | Mandatory. Label for the button on top of the module, to navigate through different contents
-| video         |`Object`| -- | Mandatory. Video of the story, it requires an asset desk `d` and mobile `m` and a poster `dCover, mCover`.
-| video - d         |`String`| -- | Mandatory. Asset video desktop
-| video - m         |`String`| -- | Mandatory. Asset video mobile
-| video - dCover         |`String`| -- | Mandatory. Poster video desktop
-| video - mCover         |`String`| -- | Mandatory. Poster video mobile
-| text         |`Object`| -- | Mandatory. Copy of the story
-| text - icon       |`String`| -- | Not Mandatory. Icon in SVG format.
-| text - title       |`String`| -- | Not Mandatory.
-| text - subtitle       |`String`| -- | Not Mandatory. 
-| text - cta       |`Object`| -- | Not Mandatory. With `label` and `link` field.
-| products       |`String[]`| -- | Mandatory. UPCs of the products to display, the array can be empty.
