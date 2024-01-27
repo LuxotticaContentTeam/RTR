@@ -5,23 +5,22 @@ const getIntersect = (entries) => {
         if (entry.isIntersecting) {
             // console.log(entry.intersectionRatio)
             if(entry.intersectionRatio < .6){
-                eventDispatch('ct_cm__load_poster');
-                eventDispatch('ct_cm__out_viewport');   
+                console.log('dis')
+                eventDispatch('ct_cm__loadLibrary');   
             }else{
-                eventDispatch('ct_cm__load_video'); 
-                eventDispatch('ct_cm__in_viewport');
-                eventDispatch('ct_cm__load_prod');
+                eventDispatch('ct_cm__loadLibrary');   
+                eventDispatch('ct_cm__loadRTR');  
             }
          
         }
     })
 }
 
-export const Lazy = (offset=100) => {
+export const Lazy = ({offset=100,selector}) => {
     let options = {
         rootMargin: `${offset}px`,
         threshold: [0,.6],
       };
     let observer = new IntersectionObserver(getIntersect, options);
-    observer.observe(   document.querySelector('#ct_cm__smv2'))
+    observer.observe(   document.querySelector(selector))
 }

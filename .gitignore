@@ -37,7 +37,7 @@ dist/index.html
 src/images
 
 #project files
-projectConfig.json
+
 
 #tanslation files
 .smartling*

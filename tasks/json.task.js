@@ -6,7 +6,7 @@ let
     { src, dest } = require('gulp'),
 	fs = require('fs'),
 	c = require('ansi-colors'),
-    { src_folder, src_generic_assets, src_generic_assets_brands, dist_generic, dist_folder, isPreProd, dist_ghPages, dist_json } = require('./_config.js'),
+    { src_folder, src_generic_assets, src_generic_assets_brands, dist_generic, dist_folder, isPreview, dist_ghPages, dist_json } = require('./_config.js'),
     browserSync = require('browser-sync').create();
 
 module.exports = function json(done) {
@@ -20,7 +20,7 @@ module.exports = function json(done) {
             dest: '.'
         },
         {
-            path: path.join(src_generic_assets_brands, global.selectedBrand, 'json.js'),
+            path: path.join(src_generic_assets_brands, global.selectedBrand, 'json.json'),
             dest: global.selectedBrand
         },
     ];
@@ -36,7 +36,7 @@ module.exports = function json(done) {
 				return src(file.path, {
 					allowEmpty: true,
 				})
-				.pipe(dest(isPreProd ? path.join(dist_ghPages,global.selectedBrand,'json',file.dest) : path.join(dist_json,file.dest)))
+				.pipe(dest(isPreview ? path.join(dist_ghPages,global.selectedBrand,'json',file.dest) : path.join(dist_json,file.dest)))
 				.pipe(browserSync.stream())
 			}
 		})

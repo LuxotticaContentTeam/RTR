@@ -2,18 +2,3 @@
 @import "./utils/variables";
 
 
-
-#ct_cm__smv2 {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    @import './layout/nav';
-    @import './layout/content';
-    
-
-    #ct_cm__sprite{
-        display: none;
-        visibility: hidden;
-    }
-   
-}

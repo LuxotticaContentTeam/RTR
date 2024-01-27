@@ -4,7 +4,7 @@
 */
 
 const { stream } = require('browser-sync');
-const { isPreProd, release, dist_export, dist_release, dist_ghPages } = require('./_config.js');
+const { isPreview, release, dist_export, dist_release, dist_ghPages, utilitiesPath } = require('./_config.js');
 
 let 
     { src, dest, series, glob } = require('gulp'),
@@ -54,10 +54,7 @@ const js = (done) => {
             path: path.join(src_asset_js_brands, global.selectedBrand, 'main.js'),
             dest: global.selectedBrand
         },
-        {
-            path: src_asset_js_main,
-            dest: '.'
-        }
+       
     ];
 
     let tasks = 
@@ -76,17 +73,18 @@ const js = (done) => {
                     .pipe($.plumber())
                     .pipe(source(`${file.dest}/main.js`))
                     .pipe(buffer())
-                    .pipe($.if(!(isProd || isPreProd), $.sourcemaps.init()))
+                    .pipe($.if(!(isProd || isPreview), $.sourcemaps.init()))
                     .pipe($.if(isProd, $.uglify()))
-                    .pipe($.if(!(isProd || isPreProd), $.sourcemaps.write('./maps')))
+                    .pipe($.if(!(isProd || isPreview), $.sourcemaps.write('./maps')))
                     .pipe(replace('@now@', now))
                     .pipe(replace('@env@', (isProd) ? 'production' : 'development' ))
-                    .pipe(replace('@buildVersion@', buildVersion ))
+                    .pipe(replace('@currentBrand@', global.selectedBrand ))
                     .pipe(replace('@imagePath@', imagePath ))
                     .pipe(replace('@confPath@', confPath ))
                     .pipe(replace('@language@', global.projLanguage ))
-                    .pipe($.if((isProd || isPreProd), $.rename({ suffix: '.min' })))
-                    .pipe( dest(isPreProd ? path.join(dist_ghPages,global.selectedBrand,'js') : dist_js) )
+                    .pipe(replace('@utilitiesPath@', utilitiesPath.replace('BRAND',global.selectedBrandExtendedName) ))
+                    .pipe($.if((isProd || isPreview), $.rename({ suffix: '.min' })))
+                    .pipe( dest(isPreview ? path.join(dist_ghPages,global.selectedBrand,'js') : dist_js) )
                     .pipe(browserSync.stream())
                     
 

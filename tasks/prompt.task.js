@@ -6,9 +6,16 @@ let
     { src } = require('gulp'),
     fs = require('fs'),
     $ = require('gulp-load-plugins')({ pattern: ['gulp-*'] }), // Setting a global variable to include all glup- plugin
-    { conf, isProd } = require('./_config.js');
+    { conf, isProd, brandsMap } = require('./_config.js');
     projectConfiguration = require('../projectConfig.json');
 
+
+const getBrandExtendedName = (selectedBrand) => {
+    let brandClean = selectedBrand.split('_')[0]
+    let brandExtendedName = '';
+    brandExtendedName = brandsMap[brandClean]
+    return brandExtendedName
+}
 module.exports = function prompt(cb) {
     let question = [
         {
@@ -38,6 +45,7 @@ module.exports = function prompt(cb) {
             global.projLanguage = res.lang ? res.lang : undefined;
             global.isRelease = res.release === 'yes' ? true : false;
             global.selectedBrand = res.brand;
+            global.selectedBrandExtendedName = getBrandExtendedName(res.brand);
             cb();
         }));
 }

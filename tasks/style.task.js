@@ -12,7 +12,7 @@ let
     browserSync = require('browser-sync').create(),
     sass = require('gulp-sass')(require('sass')),
     path = require('path'),
-    { isProd, dist_css, src_asset_scss_main, src_asset_scss_brands, isPreProd, dist_folder, release, dist_export, dist_release, dist_ghPages } = require('./_config.js');
+    { isProd, dist_css, src_asset_scss_main, src_asset_scss_brands, isPreview, dist_folder, release, dist_export, dist_release, dist_ghPages } = require('./_config.js');
 
 const scss = (done) => {
     log(`-> Style: compiling scss`);
@@ -25,7 +25,7 @@ const scss = (done) => {
     }
 
     return src([src_asset_scss_main, brandMainScssPath])
-        .pipe($.if(!(isProd || isPreProd), $.sourcemaps.init()))
+        .pipe($.if(!(isProd || isPreview), $.sourcemaps.init()))
         .pipe($.plumber())
         .pipe($.dependents())
         .pipe($.debug())
@@ -34,7 +34,7 @@ const scss = (done) => {
             $brand: global.selectedBrand
         }))
         .pipe(sass().on('error', sass.logError))
-        .pipe($.if(!(isProd || isPreProd), $.sourcemaps.write()))
+        .pipe($.if(!(isProd || isPreview), $.sourcemaps.write()))
         .pipe($.concat('main.css'))
         .pipe(dest('.tmp/css'));
 };
@@ -46,17 +46,17 @@ const postcss = () => {
 
     return src(['.tmp/css/**/*.css'])
         .pipe(f)
-        .pipe($.if(!(isProd || isPreProd), $.sourcemaps.init({loadMaps: true})))
+        .pipe($.if(!(isProd || isPreview), $.sourcemaps.init({loadMaps: true})))
         .pipe($.plumber())
         .pipe($.postcss([
                 require('autoprefixer'),
-                (isProd || isPreProd) ? require('cssnano')({ preset: 'default' }) : false
+                (isProd || isPreview) ? require('cssnano')({ preset: 'default' }) : false
             ].filter(Boolean)))
-        .pipe($.if(!(isProd || isPreProd), $.sourcemaps.write()))
+        .pipe($.if(!(isProd || isPreview), $.sourcemaps.write()))
         .pipe(f.restore)
-        .pipe($.if((isProd || isPreProd), $.rename({ suffix: '.min' })))
+        .pipe($.if((isProd || isPreview), $.rename({ suffix: '.min' })))
         .pipe($.size({showFiles: true}))
-        .pipe(dest(isPreProd ? path.join(dist_ghPages,global.selectedBrand,'css') :dist_css))
+        .pipe(dest(isPreview ? path.join(dist_ghPages,global.selectedBrand,'css') :dist_css))
         .pipe(browserSync.stream());
 };
 

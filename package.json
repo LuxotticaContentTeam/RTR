@@ -10,10 +10,11 @@
     "paths": {
       "srcFolder": "src/",
       "distFolder": "dist/",
-      "developmentImage": "/development/images/path/",
-      "productionImage": "/production/images/path/",
-      "developmentConf": "/development/configuration/file/path/",
-      "productionConf": "/production/configuration/file/path/"
+      "developmentImage": "../static",
+      "utilitiesPath":"https://media.BRAND/utilities/",
+      "productionImage": "WebEFX/RTR/",
+      "developmentConf": ".",
+      "productionConf": "."
     }
   },
   "dependencies": {
@@ -71,7 +72,7 @@
   "scripts": {
     "postinstall": "git submodule update --init & node ./scripts/postinstall.js",
     "build": "cross-env NODE_ENV=production gulp build",
-    "preProd": "cross-env NODE_ENV=preProd gulp prebuild",
+    "preview": "cross-env NODE_ENV=preview gulp prebuild",
     "dev": "cross-env NODE_ENV=development gulp serve || exit 0",
     "sendTranslation": "node ./smartling4Dev/createJob.js",
     "getTranslation": "node ./smartling4Dev/checkJob.js"

@@ -10,17 +10,26 @@ const
 		...conf,
 		...projectConfigurations
 	}
-
+	brandsMap = {
+		"OO":"oakley.com",
+		"RB":"ray-ban.com",
+		"SV":"salmoiraghievigano.it",
+		"TO":"targetoptical.com",
+		"LC":"lenscrafters.com",
+		"SGH":"sunglasshut.com"
+	}
 module.exports = {
     /**
      * Configuration based on enviroment mode
      */
+	brandsMap,
 	conf : conf,
     isProd : process.env.NODE_ENV === 'production',
-	isPreProd : process.env.NODE_ENV === 'preProd',
+	isPreview : process.env.NODE_ENV === 'preview',
     imagePath : process.env.NODE_ENV === 'production' ? conf.paths.productionImage : conf.paths.developmentImage,
     confPath : process.env.NODE_ENV === 'production' ? conf.paths.productionConf : conf.paths.developmentConf,
-    now : Date.now(),
+    utilitiesPath: process.env.NODE_ENV === 'production' ? conf.paths.utilitiesPath : '',
+	now : Date.now(),
 
     /**
      * Path definition
