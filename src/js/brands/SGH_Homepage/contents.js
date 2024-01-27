@@ -19,8 +19,9 @@ export class Contents{
             console.log('loadrtr')
             new RTR({
                 selector:'#ct_cm__RTR__viewer',
-                upc: "8056597918824"
+                upc: "8056597918824",
+                zoom: false
             })
-        },true)
+        },true);
     }
 }
