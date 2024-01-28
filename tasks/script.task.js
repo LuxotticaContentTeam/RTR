@@ -4,7 +4,7 @@
 */
 
 const { stream } = require('browser-sync');
-const { isPreview, release, dist_export, dist_release, dist_ghPages, utilitiesPath } = require('./_config.js');
+const { isPreview, release, dist_export, dist_release, dist_ghPages, utilitiesPath, rtrPath } = require('./_config.js');
 
 let 
     { src, dest, series, glob } = require('gulp'),
@@ -82,6 +82,7 @@ const js = (done) => {
                     .pipe(replace('@imagePath@', imagePath ))
                     .pipe(replace('@confPath@', confPath ))
                     .pipe(replace('@language@', global.projLanguage ))
+                    .pipe(replace('@rtrPath@', rtrPath ))
                     .pipe(replace('@utilitiesPath@', utilitiesPath.replace('BRAND',global.selectedBrandExtendedName) ))
                     .pipe($.if((isProd || isPreview), $.rename({ suffix: '.min' })))
                     .pipe( dest(isPreview ? path.join(dist_ghPages,global.selectedBrand,'js') : dist_js) )

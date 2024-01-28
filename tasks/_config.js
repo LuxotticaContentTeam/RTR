@@ -29,6 +29,7 @@ module.exports = {
     imagePath : process.env.NODE_ENV === 'production' ? conf.paths.productionImage : conf.paths.developmentImage,
     confPath : process.env.NODE_ENV === 'production' ? conf.paths.productionConf : conf.paths.developmentConf,
     utilitiesPath: process.env.NODE_ENV === 'production' ? conf.paths.utilitiesPath : '',
+    rtrPath: process.env.NODE_ENV === 'production' ? conf.paths.productionRTRPath : conf.paths.developmentRTRPath,
 	now : Date.now(),
 
     /**

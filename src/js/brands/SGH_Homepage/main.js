@@ -19,13 +19,13 @@ class BannerHome{
         this.infoStore = await checkStore(this.stateManger.env,infoStoreLocal,infoStore);
         
         
-        this.rawJson = await getData();
+        this.json = await getData();
         
         
         // this.json = clearData(this.rawJson)
         this.Contents = new Contents()
 
-        Lazy({selector:'#ct_cm__RTR'});
+        Lazy({selector:'#ct_cm_RTR__container'});
 
 
     }

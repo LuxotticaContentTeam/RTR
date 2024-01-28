@@ -5,11 +5,10 @@ const getIntersect = (entries) => {
         if (entry.isIntersecting) {
             // console.log(entry.intersectionRatio)
             if(entry.intersectionRatio < .6){
-                console.log('dis')
-                eventDispatch('ct_cm__loadLibrary');   
+                eventDispatch('ct_cm_rtr__loadData');   
             }else{
-                eventDispatch('ct_cm__loadLibrary');   
-                eventDispatch('ct_cm__loadRTR');  
+                eventDispatch('ct_cm_rtr__loadData');   
+                eventDispatch('ct_cm_rtr__loadModel');  
             }
          
         }

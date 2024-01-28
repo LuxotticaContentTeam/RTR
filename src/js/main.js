@@ -1,17 +1,19 @@
 
 // import {ct_log, ct_get__device_type, eventCatcher} from './modules/utils';
 
-import { checkData, eventDispatch } from "./modules/utils";
+import { checkData, eventDispatch, loadScript } from "./modules/utils";
 
 /**
  * @typedef {Object} RTROptions
  * @property {string} selector - The selector of the container element where the viewer will be embedded.
+ * @property {string} version - RTR library version
  * @property {string} upc - The UPC (Universal Product Code) associated with the product for real-time rendering visualization.
  * @property {string} zoom - The type of zoom in the real-time rendering viewer. Use 'dolly' for zoom, 'none' for no zoom.
  * @property {string} [hdr="@utilitiesPath@@imagePath@/hdr/panorama_2_1.hdr"] - The path to the HDR environment map for real-time rendering.
  * @property {string} [env='production'] - The environment (e.g., 'development', 'production') for viewer metadata.
  * @property {boolean} [autoRotateCamera=false] - Whether to enable auto rotation of the camera in the real-time rendering viewer.
  * @property {boolean} [showBackground=true] - Whether to show the background in the real-time rendering viewer.
+ * @property {string} [backgroundPath] - path of the background
  * @property {string} [clearColor='#fff'] - The clear color of the real-time rendering viewer background.
  * @property {boolean} [showEnvironment=false] - Whether to show the environment in the real-time rendering viewer.
  */
@@ -57,6 +59,7 @@ import { checkData, eventDispatch } from "./modules/utils";
 export default class RTR {
     constructor(
         {
+            version,
             selector, 
             upc, 
             zoom,
@@ -64,8 +67,13 @@ export default class RTR {
             env,
             autoRotateCamera,
             showBackground,
+            backgroundPath,
             clearColor,
-            showEnvironment
+            showEnvironment,
+            boundingAreaTopLeftX,
+            boundingAreaTopLeftY,
+            boundingAreaBottomRightX,
+            boundingAreaBottomRightY,
         }){
 
         window.ct_RTR = this;
@@ -78,17 +86,21 @@ export default class RTR {
         this.autoRotateCamera = autoRotateCamera ? autoRotateCamera : false;
         this.showBackground = showBackground ? showBackground : true;
         this.clearColor = clearColor ? clearColor : "#fff";
-        this.zoom = zoom ? 'dolly' : 'none'
+        this.zoom = zoom ? 'dolly' : 'none';
+        this.backgroundPath= backgroundPath ? backgroundPath : '';
+        this.boundingAreaTopLeftX = boundingAreaTopLeftX ? boundingAreaTopLeftX : 0,
+        this.boundingAreaTopLeftY = boundingAreaTopLeftY ? boundingAreaTopLeftY : 0,
+        this.boundingAreaBottomRightX = boundingAreaBottomRightX ? boundingAreaBottomRightX : 1,
+        this.boundingAreaBottomRightY = boundingAreaBottomRightY ? boundingAreaBottomRightY : 1,
         
         this.isRotating = false    
-
-        this.init()
-       
+        this.isReady = false
+        loadScript(`@rtrPath@/lib/v/${version}/main.js`,()=>{this.isReady = true})
+    
     }    
     async init (){
+        
         await checkData()
-       
-
         this.RTRViewr = window.rtrViewer;
         this.RTRViewr.init({
             data:{
@@ -98,14 +110,30 @@ export default class RTR {
                     value: this.upc
                 },
                 environmentPath: this.hdr,
+                backgroundPath: this.backgroundPath,
                 settings:{
                     showEnvironment: this.showEnvironment,
-                    orbitPoint:false,
-                    autoRotateCamera: this.autoRotateCamera,
-                    pixelRatio: Math.min(window.devicePixelRatio, 2),
                     showBackground: this.showBackground,
                     clearColor:this.clearColor,
+                    
+                    orbitPoint:false,
+                    pixelRatio: Math.min(window.devicePixelRatio, 2),
+                    
+                    autoRotateCamera: this.autoRotateCamera,
 
+                    //bounding area
+                    boundingArea: {
+                        topLeft: {
+                            x: this.boundingAreaTopLeftX,
+                            y: this.boundingAreaTopLeftY,
+                        },
+                        bottomRight: {
+                            x: this.boundingAreaBottomRightX,
+                            y: this.boundingAreaBottomRightY,
+                        },
+                    },
+
+                    // gesture
                     gestures: {
                         mouse: {
                             left: 'rotate',
@@ -152,70 +180,3 @@ export default class RTR {
     }
     
 }
-
-// new RTR({
-//     data: {
-//         selector: '#ct_cm__RTR__viewer',
-//         id: {
-//             type: 'upc',
-//             value: "8056597918824"
-//         },
-//     // backgroundPath: '#000',
-      
-//         settings: {
-//             showEnvironment: false,
-//             showBackground: false,
-//             clearColor:'#000',
-//             orbitPoint: false,
-            
-//             
-            
-//             pixelRatio: window.devicePixelRatio,
-//             autoResetCamera: false, // <----- QUESTO DISABILITA IL RESET DELLA CAMERA AL LOADING
-//             cameraRotationInitial: { // <----- QUESTO IMPOSTA LA ROTAZIONE INIZIALE DELLA CAMERA (IN GRADI)
-//                 phi: 0, // rage [-90, 90]
-//                 theta: 0, // range [-180 - 180]
-//             },
-//             cameraRotationReset: { // <----- QUESTO LA TARGET ROTATION (IN GRADI)
-//                 phi: 20,
-//                 theta: 40,
-//             },
-//             gestures: {
-//                 mouse: {
-//                     left: 'rotate',
-//                     middle: 'none',
-//                     right: 'none',
-//                     wheel: 'none',
-//                 },
-//                 touches: {
-//                     one: 'rotate',
-//                     two: 'rotate',
-//                     three: 'dolly-pan',
-//                 },
-//             },
-//         }
-//     },
-//     metadata: {
-//         env: 'production',
-//     },
-//     callbacks: {
-//         onRendered: () => {
-            
-//         },
-//         onActions:({actions})=> {
-//             console.log(actions)
-//         },
-//         onFocus:({focus})=>{
-//             console.log(focus)
-//         },
-//         onError: ({ code, context, error }) =>  {
-//             console.log('Error code:', code);
-//             console.log('Error context:', context);
-//             console.error(error);
-//         },
-//     }
-// });
-
-
-
-   

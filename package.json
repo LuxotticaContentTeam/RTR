@@ -11,10 +11,12 @@
       "srcFolder": "src/",
       "distFolder": "dist/",
       "developmentImage": "../static",
+      "productionImage": "WebEFX/RTR",
       "utilitiesPath":"https://media.BRAND/utilities/",
-      "productionImage": "WebEFX/RTR/",
       "developmentConf": ".",
-      "productionConf": "."
+      "productionConf": ".",
+      "developmentRTRPath": "../static",
+      "productionRTRPath": "https://rtr-viewer.luxottica.com"
     }
   },
   "dependencies": {
