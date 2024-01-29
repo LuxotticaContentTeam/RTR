@@ -12,10 +12,10 @@
       "distFolder": "dist/",
       "developmentImage": "../static",
       "prevImage": "https://media.sunglasshut.com/utilities/WebEFX/RTR/preview/SGH_Homepage/static",
-      "prevRTRImgPath":"https://media.sunglasshut.com/utilities/WebEFX/RTR/preview/SGH_Homepage/static",
-      "devRTRImgPath":"../static",
+      "prevRTRImgPath": "https://media.sunglasshut.com/utilities/WebEFX/RTR/preview/SGH_Homepage/static",
+      "devRTRImgPath": "../static",
       "prodRTRImgPath": "WebEFX",
-      "utilitiesPath":"https://media.BRAND/utilities/",
+      "utilitiesPath": "https://media.BRAND/utilities/",
       "developmentConf": ".",
       "productionConf": ".",
       "prevRTRPath": "https://media.sunglasshut.com/utilities/WebEFX/RTR/preview/SGH_Homepage/static",
@@ -24,7 +24,9 @@
     }
   },
   "dependencies": {
+    "akamai-edgegrid": "^3.4.4",
     "debug": "^4.3.1",
+    "dotenv": "^16.0.0",
     "gulp-debug": "^3.2.0",
     "gulp-string-replace": "^1.1.2"
   },

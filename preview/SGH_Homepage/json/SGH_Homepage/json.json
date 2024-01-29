@@ -1,30 +1,40 @@
 {
-    "products": [
-        {
-            "upc": "8056597988377",
+    "products": {
+        
+        "8056597988377":{
             "img": "https://assets.sunglasshut.com/is/image/LuxotticaRetail/8056597988377__STD__shad__cfr.png?impolicy=ContentImQuery&im=Resize,width=250",
             "brand": "Ray-Ban",
-            "name": "Ray-Ban | Meta Wayfarer"
+            "name": "Ray-Ban | Meta Wayfarer",
+            "url":{
+                "en": "/ray-ban-meta/rw4006-8056597988377?rtrpdp"
+            }
         },
-        {
-            "upc": "8056597988391",
+        
+        "8056597988391":{
             "img": "https://assets.sunglasshut.com/is/image/LuxotticaRetail/8056597988391__STD__shad__cfr.png?impolicy=ContentImQuery&im=Resize,width=250",
             "brand": "Ray-Ban",
-            "name": "Ray-Ban | Meta Headliner"
+            "name": "Ray-Ban | Meta Headliner",
+            "url":{
+                "en": "/ray-ban-meta/rw4009-8056597988391?rtrpdp"
+            }
         },
-        {
-            "upc": "8056597744430",
+        "8056597744430":{
             "img": "https://assets.sunglasshut.com/is/image/LuxotticaRetail/8056597744430__STD__shad__cfr.png?impolicy=ContentImQuery&im=Resize,width=250",
             "brand": "Prada",
-            "name": "PR 13ZS"
+            "name": "PR 13ZS",
+            "url":{
+                "en": "/prada/pr-13zs-8056597744430?rtrpdp"
+            }
         },
-        {
-            "upc": "8056597895651",
-            "img": "https: //assets.sunglasshut.com/is/image/LuxotticaRetail/8056597895651__STD__shad__cfr.png?impolicy=ContentImQuery&im=Resize,width=250",
+        "8056597895651":{
+            "img": "https://assets.sunglasshut.com/is/image/LuxotticaRetail/8056597895651__STD__shad__cfr.png?impolicy=ContentImQuery&im=Resize,width=250",
             "brand": "Versace",
-            "name": "Medusa Biggie"
+            "name": "Medusa Biggie",
+            "url":{
+                "en": "/versace/ve4425u-8056597895651?rtrpdp"
+            }
         }
-    ],
+    },
     "img_sx": {
         "d": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAA1JREFUGFdjuHn2yH8ACFcDavqIft4AAAAASUVORK5CYII=",
         "m": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAPCAYAAADtc08vAAAAAXNSR0IArs4c6QAAAB5JREFUOE9jvHD0wH8GCgDjqAEMo2HAMBoGDIMhDAAOyDH8If50jQAAAABJRU5ErkJggg=="
@@ -88,19 +98,6 @@
             "pt-br": "ARRASTRAR",
             "es-mx": "Comprar ya"
         }
-    },
-    "links": {
-        "8056597988377": {
-            "en": "/ray-ban-meta/rw4006-8056597988377?rtrpdp"
-        },
-        "8056597988391": {
-            "en": "/ray-ban-meta/rw4009-8056597988391?rtrpdp"
-        },
-        "8056597744430": {
-            "en": "/prada/pr-13zs-8056597744430?rtrpdp"
-        },
-        "8056597895651": {
-            "en": "/versace/ve4425u-8056597895651?rtrpdp"
-        }
     }
+  
 }

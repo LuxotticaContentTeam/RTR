@@ -86,9 +86,21 @@ export class Contents{
                 showBackground:true,
                 clearColor:'#D9CDC4',
                 backgroundPath: this.stateManger.device ==='desk' ? '@utilitiesPath@@rtrImgPath@/RTRimages/SGH/bkg_rtr_full.jpg':'@utilitiesPath@@rtrImgPath@/RTRimages/SGH/bkg_rtr_full_m.jpg', //dev
-                // backgroundPath:'@utilitiesPath@@imagePath@images/SGH/bkg_rtr.jpg' //prod
                 boundingAreaTopLeftX:this.stateManger.device ==='desk' ? .5 : 0,
-                boundingAreaTopLeftY:this.stateManger.device === 'desk' ? 0 : this.stateManger.device ==='tab' ? .4 : .5
+                boundingAreaTopLeftY:this.stateManger.device === 'desk' ? 0 : this.stateManger.device ==='tab' ? .4 : .5,
+                safeAreaEnabled:true,
+                safeAreaWidthLeft:this.stateManger.device ==='desk' ? '0' : '20%',
+                safeAreaWidthRight:this.stateManger.device ==='desk' ? '10%' : '20%',
+                minDistance: .4,
+                hotPositionsEnabled:true,
+                hotPositions:[ 
+                    [0.00,0.00,.5], //front
+                    [.5,0.00,0.00], //side left
+                    [-.5,0.00,0.00], //side right
+                    [0.30,-.2,.4], //front 3/4
+                    // [-.32,-.34,.6]
+                ],
+                initialPosition:[0.30,-.2,.4]
             })
         },true)
 
@@ -99,14 +111,16 @@ export class Contents{
     eventHandler(){
      
         eventCatcher('ct_cm__RTR_rendered',({id})=>{
-            if (!this.fistRender){ 
-                this.fistRender = true;
-                this.container.querySelector('.ct_cm_RTR__viewer').addEventListener('mousemove',e=>{
-                    this.cursor.style.top = `${e.pageY - 8}px`
-                    this.cursor.style.left = `${e.pageX + 16}px`
-                })
+            if(id === this.RTR.selector){
+                if (!this.fistRender){ 
+                    this.fistRender = true;
+                    this.container.querySelector('.ct_cm_RTR__viewer').addEventListener('mousemove',e=>{
+                        this.cursor.style.top = `${e.pageY - 8}px`
+                        this.cursor.style.left = `${e.pageX + 16}px`
+                    })
+                }
+                document.querySelector('.ct_cm__loader').classList.add('ct_cm__loaded')
             }
-            if(id === this.RTR.selector) document.querySelector('.ct_cm__loader').classList.add('ct_cm__loaded')
         })
     }
     updateProd(button){

@@ -304,5 +304,26 @@ const loadScript = (src, callback) => {
 };
 
 
+/**
+ * Finds the closest point to a given position from a list of positions.
+ *
+ * @param {number[]} currentPos - The current position as an array of three numbers [x, y, z].
+ * @param {number[][]} posList - An array of positions, each represented as an array of three numbers [x, y, z].
+ * @return {number[]} - The closest point in the posList to the currentPos.
+ */
+const getClosestPoint=(currentPos,posList) =>{
+    let minDist = null;
+    let minDistIndex = null;
+    let currentDist = 0;
+  
+    posList.forEach((pos,i)=>{
+      currentDist = Math.pow(currentPos[0]-pos[0],2)+ Math.pow(currentPos[1]-pos[1],2)+ Math.pow(currentPos[2]-pos[2],2);
+      if (!minDist || currentDist < minDist){
+        minDist = currentDist;
+        minDistIndex = i;
+      }
+    })
+    return posList[minDistIndex]
+  }
 
-export {checkData,checkStore,clearData,getData,loadScript}
+export {checkData,checkStore,clearData,getData,loadScript,getClosestPoint}
