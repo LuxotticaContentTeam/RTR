@@ -31,7 +31,7 @@ export class Contents{
                 zoom: true,
                 showBackground:true,
                 clearColor:'#D9CDC4',
-                backgroundPath:'@utilitiesPath@@imagePath@/images/SGH/bkg_rtr.jpg', //dev
+                backgroundPath:'@utilitiesPath@@rtrImgPath@/RTRimages/SGH/bkg_rtr_full.jpg', //dev
                 // backgroundPath:'@utilitiesPath@@imagePath@images/SGH/bkg_rtr.jpg' //prod
                 boundingAreaTopLeftX:.5
             })

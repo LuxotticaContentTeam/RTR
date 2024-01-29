@@ -11,10 +11,14 @@
       "srcFolder": "src/",
       "distFolder": "dist/",
       "developmentImage": "../static",
-      "productionImage": "WebEFX/RTR",
+      "prevImage": "https://luxotticacontentteam.github.io/RTR/test/SGH_Homepage/static",
+      "prevRTRImgPath":"https://luxotticacontentteam.github.io/RTR/test/SGH_Homepage/static",
+      "devRTRImgPath":"../static",
+      "prodRTRImgPath": "WebEFX",
       "utilitiesPath":"https://media.BRAND/utilities/",
       "developmentConf": ".",
       "productionConf": ".",
+      "prevRTRPath": "https://luxotticacontentteam.github.io/RTR/test/SGH_Homepage/static",
       "developmentRTRPath": "../static",
       "productionRTRPath": "https://rtr-viewer.luxottica.com"
     }

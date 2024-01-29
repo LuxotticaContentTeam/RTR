@@ -4,7 +4,7 @@
 */
 
 const { stream } = require('browser-sync');
-const { isPreview, release, dist_export, dist_release, dist_ghPages, utilitiesPath, rtrPath } = require('./_config.js');
+const { isPreview, release, dist_export, dist_release, dist_ghPages, utilitiesPath, rtrPath, rtrImgPath } = require('./_config.js');
 
 let 
     { src, dest, series, glob } = require('gulp'),
@@ -83,6 +83,7 @@ const js = (done) => {
                     .pipe(replace('@confPath@', confPath ))
                     .pipe(replace('@language@', global.projLanguage ))
                     .pipe(replace('@rtrPath@', rtrPath ))
+                    .pipe(replace('@rtrImgPath@', rtrImgPath ))
                     .pipe(replace('@utilitiesPath@', utilitiesPath.replace('BRAND',global.selectedBrandExtendedName) ))
                     .pipe($.if((isProd || isPreview), $.rename({ suffix: '.min' })))
                     .pipe( dest(isPreview ? path.join(dist_ghPages,global.selectedBrand,'js') : dist_js) )
@@ -100,7 +101,7 @@ const js = (done) => {
 
 const concatScripts = (done) => {
     if (!global.isRelease) return done();
-    return src([path.join(dist_js,global.selectedBrand,"main.min.js"), path.join(dist_js,'main.min.js')]) 
+    return src([path.join(dist_js,global.selectedBrand,"main.min.js")]) 
         .pipe($.concat(`main__${release}.min.js`))
         .pipe( dest(path.join(dist_release,global.selectedBrand,release)) )
 }
