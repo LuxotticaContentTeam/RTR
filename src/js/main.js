@@ -74,6 +74,8 @@ export default class RTR {
             boundingAreaTopLeftY,
             boundingAreaBottomRightX,
             boundingAreaBottomRightY,
+
+            safeArea
         }){
 
         window.ct_RTR = this;
@@ -92,9 +94,12 @@ export default class RTR {
         this.boundingAreaTopLeftY = boundingAreaTopLeftY ? boundingAreaTopLeftY : 0,
         this.boundingAreaBottomRightX = boundingAreaBottomRightX ? boundingAreaBottomRightX : 1,
         this.boundingAreaBottomRightY = boundingAreaBottomRightY ? boundingAreaBottomRightY : 1,
+
+        this.safeArea = safeArea
         
-        this.isRotating = false    
-        this.isReady = false
+        this.isRotating = false;
+        this.isReady = false;
+        
         loadScript(`@rtrPath@/lib/v/${version}/main.js`,()=>{this.isReady = true})
     
     }    

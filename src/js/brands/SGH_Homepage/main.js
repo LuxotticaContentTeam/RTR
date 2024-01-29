@@ -16,14 +16,14 @@ class BannerHome{
         customLog('started')   
 
         
-        this.infoStore = await checkStore(this.stateManger.env,infoStoreLocal,infoStore);
+        this.stateManger.infoStore = await checkStore(this.stateManger.env,infoStoreLocal,infoStore);
         
         
         this.json = await getData();
         
         
         // this.json = clearData(this.rawJson)
-        this.Contents = new Contents()
+        this.Contents = new Contents(this.stateManger)
 
         Lazy({selector:'#ct_cm_RTR__container'});
 

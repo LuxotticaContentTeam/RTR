@@ -69,7 +69,7 @@ module.exports = {
 	dist_json                 : path.join(conf.paths.distFolder, '/json'),
 	dist_static_assets        : path.join(conf.paths.distFolder, '/static'),
 	dist_release              : './release',
-	dist_ghPages              : './test',
+	dist_ghPages              : './preview',
 
 	assetVersion              : pkg.version,
 	release                   : pkg.version,

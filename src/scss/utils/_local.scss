@@ -31,4 +31,31 @@
          
          
     }
+    @if($brand == 'SGH_Homepage'){
+      @font-face {
+          font-family: "Acta Headline";
+          src: url(../static/fonts/SGH/ActaHeadlineLight_normal_normal.woff2) format('woff');
+          font-weight: 300;
+          font-style: normal;
+       }
+       @font-face {
+          font-family: "Acta Headline";
+          src: url(../static/fonts/SGH/ActaHeadlineBook_normal_normal.woff2) format('woff');
+          font-weight: 400;
+          font-style: normal;
+       }
+       
+       @font-face {
+          font-family: "Acta Headline";
+          src: url(../static/fonts/SGH/ActaHeadlineBold_normal_normal.woff2) format('woff');
+          font-weight: 500;
+          font-style: normal;
+       }
+       
+       *{
+          font-family: 'Helvetica Neue',sans-serif;
+       }
+       
+       
+  }
 }

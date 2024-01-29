@@ -1,14 +1,17 @@
 
 # RTR
 
-  
+
+
 
 ## Project Spefic
 
 RTR class basically it's an extension of the rtrViewer class (RTR: [docs](https://rtr-viewer.luxottica.com/guide/version/5/index.html)) , with some additional functionality and some default values.
 
 In the the folder brands there are the specific implementation for each brand, since the RTR is used in different ways in different brands( banner homepage, PDP overlay) I use the naming convention **BRAND_ModuleType** to specify the brand and the module variant. (es SGH_homepage, RB_PDPoverlay)
-  
+
+## DEMO    
+[SGH Banner Homepage](https://media.sunglasshut.com/utilities/WebEFX/RTR/preview/SGH_Homepage/index.html)
 
 ## Project Structure
 
@@ -30,7 +33,7 @@ In the `utils > local.scss` file are included rules for dev in local, like impor
 
 **release**: contains the bundled/minified css and js divided by brand and release number. <br/>
 
-**test**: contains the file testable on github pages, with the correct relative path
+**preview**: contains the file testable on github pages, with the correct relative path
 
   
 
@@ -54,7 +57,7 @@ To run local server, `env` variable is set to `"development"` and `isProd` is se
 
 npm run preview
 
-This command is used just to run a build and place the files in the `test` folder. Ad hoc paths for github pages are set. To share the module with others before going to prod.
+This command is used just to run a build and place the files in the `preview` folder. Ad hoc paths for github pages are set. To share the module with others before going to prod.
 
   
 

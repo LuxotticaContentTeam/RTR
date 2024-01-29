@@ -25,7 +25,7 @@ module.exports = function inject(){
         .pipe($.inject(streamSeries(vendors, sources), {
             ignorePath: dist_folder,
             addRootSlash: false,
-            addPrefix: isPreview ? 'https://luxotticacontentteam.github.io/RTR' : ''
+            addPrefix: isPreview ? 'https://media.sunglasshut.com/utilities/WebEFX/RTR' : ''
         }))
         .pipe($.debug())
         .pipe(dest(isPreview ? path.join(dist_ghPages,global.selectedBrand) : dist_folder))
