@@ -18,33 +18,43 @@ In the the folder brands there are the specific implementation for each brand, s
 
 | Attribute                | Description                                                                                                                                                                                                                            | Type          | Mandatory |
 |--------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|-----------|
-| `version`                | Version of the RTR library.                                                                                                                                                                                                           | `string`      | Yes       |
+| `version`                | Version of the RTR library. Current 5.1.2                                                                                                                                                                                                          | `string`      | Yes       |
 | `selector`               | Selector for the HTML element where the RTR will be rendered.                                                                                                                                                                         | `string`      | Yes       |
-| `upc`                    | UPC to render model.                                                                                                                                                                             | `string`      | Yes       |
+| `upc`                    | UPC of the model to render.                                                                                                                                                                             | `string`      | Yes       |
 | `zoom`                   | Enable zoom functionality.                                                                                                                                                                                                            | `boolean`     | No        |
 | `hdr`                    | Path to the HDR environment map. If not defined, it takes the default HDR path or a path based on the production environment.                                                                                                       | `string`      | No        |
 | `env`                    | Environment setting; default is 'production'. Other values are 'mock', 'static', 'development'                                                                                                                                                                                      | `string`      | No        |
 | `autoRotateCamera`       | Enable auto-rotation of the camera.                                                                                                                                                                                                   | `boolean`     | No        |
 | `showBackground`         | Show the background.                                                                                                                                                                                                                  | `boolean`     | No        |
 | `backgroundPath`         | Path to the custom background.                                                                                                                                                                                                        | `string`      | No        |
-| `clearColor`             | Color used to clear the background.                                                                                                                                                                                                   | `string`      | No        |
-| `showEnvironment`        | Show the environment.                                                                                                                                                                                                                | `boolean`     | No        |
+| `clearColor`             | Background color full.                                                                                                                                                                                                   | `string`      | No        |
+| `showEnvironment`        | Show the environment. (given by hdr file)                                                                                                                                                                                                                | `boolean`     | No        |
 | `boundingAreaTopLeftX`   | X-coordinate of the top-left corner of the bounding area.                                                                                                                                                                             | `number`      | No        |
 | `boundingAreaTopLeftY`   | Y-coordinate of the top-left corner of the bounding area.                                                                                                                                                                             | `number`      | No        |
 | `boundingAreaBottomRightX`| X-coordinate of the bottom-right corner of the bounding area.                                                                                                                                                                         | `number`      | No        |
 | `boundingAreaBottomRightY`| Y-coordinate of the bottom-right corner of the bounding area.                                                                                                                                                                         | `number`      | No        |
-| `minDistance`            | Minimum distance for the camera.                                                                                                                                                                                                      | `number`      | No        |
-| `safeAreaEnabled`        | Enable safe area.                                                                                                                                                                                                                    | `boolean`     | No        |
+| `minDistance`            | Minimum distance for the camera. I.E max zoom on the model.                                                                                                                                                                                                     | `number`      | No        |
+| `safeAreaEnabled`        | Enable safe area. Useful for mobile to allow user to scroll the page if he scrolls on the border.                                                                                                                                                                                                                   | `boolean`     | No        |
 | `safeAreaWidthLeft`      | Width of the safe area on the left.                                                                                                                                                                                                  | `string`      | No        |
 | `safeAreaWidthRight`     | Width of the safe area on the right.                                                                                                                                                                                                 | `string`      | No        |
-| `initialPosition`        | Initial position of the camera as an array [x, y, z].                                                                                                                                                                                 | `number[]`    | No        |
-| `hotPositionsEnabled`    | Enable hot positions.                                                                                                                                                                                                                | `boolean`     | No        |
+| `initialPosition`        | Initial position of the camera as an array [x, y, z]. Es [0.30,-.2,.4] is the 3/4 view on the left.                                                                                                                                                                                | `number[]`    | No        |
+| `hotPositionsEnabled`    | Enable hot positions. After interacting the model, it repositions itself to the closest 'hotPosition' defined.                                                                                                                                                                                                             | `boolean`     | No        |
 | `hotPositions`           | Array of hot positions, each represented as an array [x, y, z].                                                                                                                                                                      | `number[][]`  | No        |
 | `isRotating`             | Flag indicating whether the camera is currently rotating.                                                                                                                                                                           | `boolean`     | No        |
 | `isReady`                | Flag indicating whether the RTR instance is ready for rendering.                                                                                                                                                                    | `boolean`     | No        |
 | `isFirsfitRender`        | Flag indicating whether the first render has occurred.                                                                                                                                                                              | `boolean`     | No        |
 | `camera`                 | Reference to the camera controls for additional customization.                                                                                                                                                                     | `object`      | No        |
 | `RTRViewr`               | Reference to the RTR viewer object after initialization.                                                                                                                                                                            | `object`      | No        |
+### RTR Events
+
+| Event Name     | Description   | Data |                                                                                                                                                                                      
+|----------------|---------------|-------|
+|ct_cm__RTR_rendered | Triggered when the model is rendered | `{id:this.selector}` every event returns also an id that is the selector of the instance, in this way if there are multiple intance is possible to define which instance triggered the event |
+| ct_cm__RTR_actions | Triggered when and action is performed dolly/dolly-pan/dolly-rotate/pan/rotate and when the action ends |  return `{dolly:true/false,pan:true/false, ecc..}` for each action. |
+|ct_cm__RTR_startRotate | Event specific for rotation. Triggered when rotation starts | `{rotate:true}`|
+| ct_cm__RTR_endRotate | Event specific for rotation. Triggered when rotation starts | `{rotate:false}`|
+| ct_cm__RTR_focus | Triggered when focus action is performed. Generally double click on and outside the model | `{focus:true/false}`|
+| onError | display the information of the error that occurred | none |
 
 ## Project Structure
 
@@ -84,13 +94,13 @@ To run local server, `env` variable is set to `"development"` and `isProd` is se
 
   
 
-**TEST**
+**PREVIEW**
 
   
 
 npm run preview
 
-This command is used just to run a build and place the files in the `preview` folder. Ad hoc paths for github pages are set. To share the module with others before going to prod.
+This command is used just to run a build and place the files in the `preview` folder. Ad hoc paths for akamai media: `/utilities/WebEFX/RTR/preview`
 
   
 
