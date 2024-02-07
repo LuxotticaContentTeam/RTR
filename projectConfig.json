@@ -3,6 +3,8 @@
     "langs": ["en-us"],
     "serveInNewTab": false,
     "brands": [
-        "SGH_Homepage","RB"
+        "SGH_Homepage",
+        "RB",
+        "OO_PDP"
     ]
 }

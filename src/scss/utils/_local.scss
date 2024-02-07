@@ -31,7 +31,7 @@
          
          
     }
-    @if($brand == 'SGH_Homepage'){
+    @if($brand == 'SGH'){
       @font-face {
           font-family: "Acta Headline";
           src: url(../static/fonts/SGH/ActaHeadlineLight_normal_normal.woff2) format('woff');
@@ -58,4 +58,37 @@
        
        
   }
+  @if($brand == 'OO'){
+   @font-face {
+      font-family: "AvenirNext";
+      src: url(../static/fonts/OO/AvenirNext-Regular.woff2) format('woff');
+      font-weight: 100;
+      font-style: normal;
+      }
+      @font-face {
+      font-family: "AvenirNext";
+      src: url(../static/fonts/OO/AvenirNext-Medium.woff2) format('woff');
+      font-weight: 400;
+      font-style: normal;
+      }
+      @font-face {
+      font-family: "AvenirNext";
+      src: url(../static/fonts/OO/AvenirNext-Bold.woff2) format('woff');
+      font-weight: 700;
+      font-style: normal;
+      }
+      
+      @font-face {
+      font-family: "AvenirNext";
+      src: url(../static/fonts/OO/AvenirNext-Heavy.woff2) format('woff');
+      font-weight: 900;
+      font-style: normal;
+      }
+      
+      *{
+          font-family: 'AvenirNext', sans-serif;
+      }
+   
+    
+}
 }

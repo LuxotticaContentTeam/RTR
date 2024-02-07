@@ -1,0 +1,9 @@
+@import './variables';
+
+#ct_cm_RTR__container{
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    @import './layout/contents';
+
+}

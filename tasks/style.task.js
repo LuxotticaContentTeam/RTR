@@ -31,7 +31,8 @@ const scss = (done) => {
         .pipe($.debug())
         .pipe($.sassVariables({
             $env: isProd ? 'production' : 'development',
-            $brand: global.selectedBrand
+            $brand: global.selectedBrand.split('_')[0],
+            $project: global.selectedBrand,
         }))
         .pipe(sass().on('error', sass.logError))
         .pipe($.if(!(isProd || isPreview), $.sourcemaps.write()))
@@ -43,7 +44,7 @@ const postcss = () => {
     const f = $.filter(['.tmp/css/*.css'], {restore: true});
 
     log(`-> Style: run post scss`);
-
+    console.log(global.selectedBrand.split('_')[0])
     return src(['.tmp/css/**/*.css'])
         .pipe(f)
         .pipe($.if(!(isProd || isPreview), $.sourcemaps.init({loadMaps: true})))

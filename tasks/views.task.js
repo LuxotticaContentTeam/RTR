@@ -15,7 +15,8 @@ const views = function views(cb) {
         pretty  :   true,
         locals : {
             isProd : isProd,
-            brand : global.selectedBrand,
+            project:global.selectedBrand,
+            brand : global.selectedBrand.split('_')[0],
             isPreview : isPreview,
             lang: !isProd ? global.projLanguage.split('-')[0]:null,
             country:!isProd ? global.projLanguage:null,
