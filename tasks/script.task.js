@@ -54,7 +54,10 @@ const js = (done) => {
             path: path.join(src_asset_js_brands, global.selectedBrand, 'main.js'),
             dest: global.selectedBrand
         },
-       
+        {
+            path: src_asset_js_main,
+            dest: '.'
+        }
     ];
 
     let tasks = 

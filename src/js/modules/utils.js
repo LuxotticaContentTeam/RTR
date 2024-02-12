@@ -184,7 +184,7 @@ const getData = async () => {
      */
 
     try {
-        const response = await fetch(`@confPath@/json/@currentBrand@/json.json`);
+        const response = await fetch(`./json/@currentBrand@/json.json`);
 
         if (!response.ok) {
             throw new Error(`Failed to fetch data. Status: ${response.status}`);

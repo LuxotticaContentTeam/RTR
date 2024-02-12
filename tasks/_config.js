@@ -26,10 +26,10 @@ module.exports = {
 	conf : conf,
     isProd : process.env.NODE_ENV === 'production',
 	isPreview : process.env.NODE_ENV === 'preview',
-    imagePath : process.env.NODE_ENV === 'production' ? conf.paths.productionImage : process.env.NODE_ENV === 'preview' ? conf.paths.prevImage : conf.paths.developmentImage,
+    imagePath : process.env.NODE_ENV === 'production' ? conf.paths.prod.image : process.env.NODE_ENV === 'preview' ? conf.paths.prev.image : conf.paths.dev.image,
     confPath : process.env.NODE_ENV === 'production' ? conf.paths.productionConf : conf.paths.developmentConf,
-    utilitiesPath: process.env.NODE_ENV === 'production' ? conf.paths.utilitiesPath : '',
-    rtrPath: process.env.NODE_ENV === 'production' ? conf.paths.productionRTRPath : process.env.NODE_ENV === 'preview' ? conf.paths.prevRTRPath : conf.paths.developmentRTRPath,
+    utilitiesPath: process.env.NODE_ENV === 'production' ? conf.paths.prod.utilities : process.env.NODE_ENV === 'preview' ? conf.paths.prev.utilities : conf.paths.dev.utilities,
+    rtrPath: process.env.NODE_ENV === 'production' ? conf.paths.prod.rtrLib : process.env.NODE_ENV === 'preview' ? conf.paths.prev.rtrLib : conf.paths.dev.rtrLib,
 	rtrImgPath : process.env.NODE_ENV === 'production' ? conf.paths.prodRTRImgPath : process.env.NODE_ENV === 'preview' ? conf.paths.prevRTRImgPath : conf.paths.devRTRImgPath,
 	now : Date.now(),
 

@@ -75,10 +75,10 @@ export default class RTR {
         this.metadata = env ? { env } : { env: 'production'};
         this.showEnvironment = showEnvironment ? showEnvironment : false;
         this.autoRotateCamera = autoRotateCamera ? autoRotateCamera : false;
-        this.showBackground = showBackground ? showBackground : true;
+        this.showBackground = showBackground ? showBackground : false;
         this.clearColor = clearColor ? clearColor : "#fff";
         this.zoom = zoom ? 'dolly' : 'none';
-        this.backgroundPath= backgroundPath ? backgroundPath : '';
+        this.backgroundPath= backgroundPath ? backgroundPath : null;
         this.boundingAreaTopLeftX = boundingAreaTopLeftX ? boundingAreaTopLeftX : 0,
         this.boundingAreaTopLeftY = boundingAreaTopLeftY ? boundingAreaTopLeftY : 0,
         this.boundingAreaBottomRightX = boundingAreaBottomRightX ? boundingAreaBottomRightX : 1,
