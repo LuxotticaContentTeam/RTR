@@ -99,8 +99,11 @@ export default class RTR {
         this.isFirsfitRender = true;
         this.camera = null;
         
-        
-        loadScript(`@rtrPath@/lib/v/${version}/main.js`,()=>{this.isReady = true})
+        if (window.rtrViewer){
+            this.isReady = true
+        }else{
+            loadScript(`@rtrPath@/lib/v/${version}/main.js`,()=>{this.isReady = true})
+        }
     
     }    
     /**
