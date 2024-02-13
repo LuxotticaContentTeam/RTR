@@ -303,4 +303,7 @@ export default class RTR {
     setInitialPosition(){
         this.camera.setPosition(...this.initialPosition,true)
     }
+    setPosition(position){
+        this.camera.setPosition(...position,true)
+    }
 }
