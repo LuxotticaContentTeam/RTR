@@ -71,7 +71,7 @@ export default class RTR {
         this.RTRViewr = null;
         this.selector = selector;
         this.upc = upc;
-        this.hdr = hdr || "@utilitiesPath@@imagePath@/hdr/panorama_2_1.hdr"; // if not defined takes automatically the hdr in the static folder  and in prod https://media.BRAND.com/utilities/WebEFX/RTR/hdr/panorama_2_1.hdr 
+        this.hdr = hdr || "@utilitiesPath@@rtrimagePath@/hdr/panorama_2_1.hdr"; // if not defined takes automatically the hdr in the static folder  and in prod https://media.BRAND.com/utilities/WebEFX/RTR/hdr/panorama_2_1.hdr 
         this.metadata = env ? { env } : { env: 'production'};
         this.showEnvironment = showEnvironment ? showEnvironment : false;
         this.autoRotateCamera = autoRotateCamera ? autoRotateCamera : false;

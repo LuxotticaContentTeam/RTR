@@ -83,6 +83,7 @@ const js = (done) => {
                     .pipe(replace('@env@', (isProd) ? 'production' : 'development' ))
                     .pipe(replace('@currentBrand@', global.selectedBrand ))
                     .pipe(replace('@imagePath@', imagePath ))
+                    .pipe(replace('@rtrimagePath@', rtrimagePath ))
                     .pipe(replace('@confPath@', confPath ))
                     .pipe(replace('@language@', global.projLanguage ))
                     .pipe(replace('@rtrPath@', rtrPath ))

@@ -26,7 +26,7 @@ module.exports = {
 	conf : conf,
     isProd : process.env.NODE_ENV === 'production',
 	isPreview : process.env.NODE_ENV === 'preview',
-    imagePath : process.env.NODE_ENV === 'production' ? conf.paths.prod.image : process.env.NODE_ENV === 'preview' ? conf.paths.prev.image : conf.paths.dev.image,
+    rtrimagePath : process.env.NODE_ENV === 'production' ? conf.paths.prod.image : process.env.NODE_ENV === 'preview' ? conf.paths.prev.image : conf.paths.dev.image,
     confPath : process.env.NODE_ENV === 'production' ? conf.paths.productionConf : conf.paths.developmentConf,
     utilitiesPath: process.env.NODE_ENV === 'production' ? conf.paths.prod.utilities : process.env.NODE_ENV === 'preview' ? conf.paths.prev.utilities : conf.paths.dev.utilities,
     rtrPath: process.env.NODE_ENV === 'production' ? conf.paths.prod.rtrLib : process.env.NODE_ENV === 'preview' ? conf.paths.prev.rtrLib : conf.paths.dev.rtrLib,
