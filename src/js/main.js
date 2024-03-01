@@ -68,7 +68,7 @@ export default class RTR {
         }){
 
         window.ct_RTR = this;
-        this.RTRViewr = null;
+        this.RTRViewr = undefined;
         this.selector = selector;
         this.upc = upc;
         this.hdr = hdr || "@utilitiesPath@@rtrimagePath@/hdr/panorama_2_1.hdr"; // if not defined takes automatically the hdr in the static folder  and in prod https://media.BRAND.com/utilities/WebEFX/RTR/hdr/panorama_2_1.hdr 
@@ -78,7 +78,7 @@ export default class RTR {
         this.showBackground = showBackground ? showBackground : false;
         this.clearColor = clearColor ? clearColor : "#fff";
         this.zoom = zoom ? 'dolly' : 'none';
-        this.backgroundPath= backgroundPath ? backgroundPath : null;
+        this.backgroundPath= backgroundPath ? backgroundPath : undefined;
         this.boundingAreaTopLeftX = boundingAreaTopLeftX ? boundingAreaTopLeftX : 0,
         this.boundingAreaTopLeftY = boundingAreaTopLeftY ? boundingAreaTopLeftY : 0,
         this.boundingAreaBottomRightX = boundingAreaBottomRightX ? boundingAreaBottomRightX : 1,
@@ -97,7 +97,7 @@ export default class RTR {
         this.isRotating = false;
         this.isReady = false;
         this.isFirsfitRender = true;
-        this.camera = null;
+        this.camera = undefined;
         
         if (window.rtrViewer){
             this.isReady = true
@@ -303,7 +303,29 @@ export default class RTR {
     setInitialPosition(){
         this.camera.setPosition(...this.initialPosition,true)
     }
+    /**
+     * Set the position for the RTR instance.
+     *
+     * @function
+     * @memberof RTR
+     * @param {number[]} position - The new position to set [x, y, z].
+     * @returns {void}
+     */
     setPosition(position){
         this.camera.setPosition(...position,true)
+    }
+    /**
+     * Update the UPC (Universal Product Code) associated with the RTR instance.
+     *
+     * @function
+     * @memberof RTR
+     * @param {string} upc - The new UPC value to be set.
+     * @returns {void}
+     */
+    updateUpc(upc){
+        this.RTRViewr.setId({
+            type: 'upc',
+            value: upc
+        })
     }
 }
