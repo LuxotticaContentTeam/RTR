@@ -328,4 +328,15 @@ export default class RTR {
             value: upc
         })
     }
+    /**
+     * Set the target for the RTR instance.
+     *
+     * @function
+     * @memberof RTR
+     * @param {number[]} position - The new target to set [x, y, z].
+     * @returns {void}
+     */
+    moveTo(position){
+        this.camera.moveTo(...position,true)
+    }
 }
